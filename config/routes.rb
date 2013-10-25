@@ -1,4 +1,10 @@
 RBartolo::Application.routes.draw do
+
   devise_for :admins
-  root :to => 'restaurant/index'
+  
+  devise_scope :admin do
+    get "admins", :to => "devise/sessions#new"
+  end
+  
+  root :to => 'restaurant#index'
 end
